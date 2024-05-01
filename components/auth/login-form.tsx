@@ -19,6 +19,7 @@ import FormSuccess from "../form-success";
 import { login } from "@/actions/login";
 import { startTransition, useState, useTransition } from "react";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 const LoginForm = () => {
   const searchParams = useSearchParams();
   console.log("searchParams:", searchParams.get("error"));
@@ -90,6 +91,14 @@ const LoginForm = () => {
                       disabled={isPending}
                     />
                   </FormControl>
+                  <Button
+                    size="sm"
+                    variant="link"
+                    asChild
+                    className="px-0 font-normal"
+                  >
+                    <Link href="/auth/reset">Forgot Password?</Link>
+                  </Button>
                   <FormMessage />
                 </FormItem>
               )}
