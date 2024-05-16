@@ -1,21 +1,23 @@
-import { auth, signOut } from "@/auth";
-import React from "react";
+"use client";
+import { logout } from "@/actions/logout";
+import { getSession } from "@/actions/session";
+import React, { useEffect, useState } from "react";
 
-const SettingsPage = async () => {
-  const session = await auth();
+const SettingsPage = () => {
+  const [user, setUser] = useState<any>(null);
+  const onClick = () => {
+    logout();
+  };
+
+  useEffect(() => {
+    getSession().then((data) => setUser(data?.user));
+  }, []);
+
   return (
-    <div>
-      {JSON.stringify(session)}
-      <form
-        action={async () => {
-          "use server";
-          await signOut({
-            redirectTo: "/auth/login",
-          });
-        }}
-      >
-        <button type="submit">Sign out</button>
-      </form>
+    <div className="bg-white p-1">
+      <button type="submit" onClick={onClick}>
+        Sign out
+      </button>
     </div>
   );
 };
