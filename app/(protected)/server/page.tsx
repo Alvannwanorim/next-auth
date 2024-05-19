@@ -4,7 +4,7 @@ import React from "react";
 
 const ServerPage = async () => {
   const user = await currentUser();
-  return <UserInfo user={user} label="User Info" />;
+  return <UserInfo user={user} label="Server Components" />;
 };
 
 export default ServerPage;

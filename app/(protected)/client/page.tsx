@@ -12,7 +12,7 @@ const ClientPage = () => {
       if (data) setUser(data?.user);
     });
   }, []);
-  return <UserInfo user={user} label="User Info" />;
+  return <UserInfo user={user} label="Client Components" />;
 };
 
 export default ClientPage;
